@@ -3,5 +3,100 @@
 
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
+  =require font-awesome
   */
+
+main {
+    padding-top: 35px;
+}
+
+.sub-navbar {
+    position: fixed;
+}
+
+.board-area {
+    padding-top: 40px;
+    white-space: nowrap;
+}
+
+ul.sortable {
+    min-height: 20px;
+    margin-bottom: 2px;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
+.ui-sortable-helper {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+    box-shadow: -2px 2px 8px rgba(0,0,0,.3),0 0 1px rgba(0,0,0,.5);
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg)
+}
+
+.list-wrapper {
+    width: 270px;
+    margin: 0 5px;
+    height: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.list-wrapper:first-child {
+    margin-left: 10px
+}
+
+.list-wrapper:last-child {
+    margin-right: 10px
+}
+
+.list {
+    background: #e2e4e6;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal
+}
+
+.navbar-brand {
+    padding-top: 8px !important;
+    padding-bottom: 0 !important;
+    height: 35px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 3px !important;
+    height: 35px;
+    color: #DADADA !important;
+}
+
+.navbar {
+    min-height: 35px !important;
+    margin-bottom: 5px !important;
+    background: #026aa7;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar-text {
+    margin: 8px !important;
+}
+
+.navbar-brand {
+    color: #DADADA !important;
+}

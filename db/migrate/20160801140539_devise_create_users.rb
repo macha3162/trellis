@@ -23,7 +23,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       ## Omniauth
       t.string   :provider
       t.string   :uid
-      t.string   :name
       t.string   :token
 
       ## Confirmable

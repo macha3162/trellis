@@ -58,6 +58,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails', '~> 0.9'
 gem 'simple_form'
+gem 'gravatar_image_tag'
+gem 'font-awesome-rails'
 
 gem 'devise'
 gem 'omniauth'
