@@ -14,7 +14,7 @@
           - list.cards.order(:ordinal).each do |card|
             %li{id: card.id, class: 'list-group-item'}
               = link_to board_list_card_path(@board, list, card), 'data-target': '#myModal', 'data-toggle': 'modal' do
-                = card.title
+                = truncate(card.title, length: 18)
         .list-group-item.not-sortable{style:'margin-top: 2px'}
           = render 'card_form', {list: list}
   .list-wrapper

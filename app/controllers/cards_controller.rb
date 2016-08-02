@@ -18,7 +18,7 @@ class CardsController < ApplicationController
     cards.each_with_index do |card, index|
       card.update_attributes({list: @list, ordinal: index})
     end
-    render nothing: true
+    render body: nil
   end
 
   def new
@@ -35,6 +35,7 @@ class CardsController < ApplicationController
         format.html { redirect_to board_path(@board) }
         format.json { render :show, status: :created, location: [@board, @list, @card] }
       else
+        pp @card.errors
         format.html { redirect_to board_path(@board), alert: 'カード名を入力してください' }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
@@ -67,6 +68,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:title, :description, :order)
+    params.require(:card).permit(:title, :description, :order).merge(user: current_user)
   end
 end

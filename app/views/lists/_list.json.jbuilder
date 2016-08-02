@@ -1,2 +1,2 @@
-json.extract! list, :id, :description, :list_id, :user_id, :order, :created_at, :updated_at
-json.url list_url(list, format: :json)
+json.extract! list, :id, :name, :board_id, :ordinal, :created_at, :updated_at
+json.url board_list_url(list.board_id, list, format: :json)

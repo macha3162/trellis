@@ -1,18 +1,7 @@
+-content_for :modal_title do
+  = best_in_place [@board, @list, @card], :title, as: :input
+
 %p#notice= notice
 
 %p
-  %b Description:
-  = @card.description
-%p
-  %b List:
-  = @card.list
-%p
-  %b User:
-  = @card.user
-%p
-  %b Order:
-  = @card.order
-
-= link_to 'Edit', edit_card_path(@card)
-\|
-= link_to 'Back', cards_path
+  = best_in_place [@board, @list, @card], :description, as: :textarea, place_holder: '説明を編集'
