@@ -1,0 +1,11 @@
+= simple_form_for(@card) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+    = f.association :list
+    = f.association :user
+    = f.input :order
+
+  .form-actions
+    = f.button :submit

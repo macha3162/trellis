@@ -1,0 +1,6 @@
+= simple_form_for [@board, List.new], html: {class: 'form-inline'} do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: false, placeholder: 'リストを追加'
+    = f.button :submit, '追加'

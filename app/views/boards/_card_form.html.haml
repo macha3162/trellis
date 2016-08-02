@@ -1,0 +1,7 @@
+= simple_form_for [@board, list, Card.new] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, label: false
+  .form-actions
+    = f.button :submit

@@ -51,6 +51,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry'
   gem 'pry-rails'
 end
@@ -63,6 +64,8 @@ gem 'haml-rails', '~> 0.9'
 gem 'simple_form'
 gem 'gravatar_image_tag'
 gem 'font-awesome-rails'
+gem 'const_enum'
+gem 'best_in_place', '~> 3.0.1'
 
 gem 'devise'
 gem 'omniauth'

@@ -1,15 +1,35 @@
-%p#notice= notice
+.sub-navbar
+  %h4
+    = @board.name
+    = link_to 'Edit', edit_board_path(@board)
 
-%p
-  %b Name:
-  = @board.name
-%p
-  %b Scope:
-  = @board.scope
-%p
-  %b Bgcolor:
-  = @board.bgcolor
+.board-area
+  - @board.lists.each do |list|
+    .list-wrapper
+      .well.well-sm
+        %h4
+          = best_in_place [@board, list], :name, :as => :input
+          = link_to 'x', [@board, list], :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %ul{id: "list_#{list.id}", class: 'list-group sortable', 'data-board_id': @board.id, 'data-list_id': list.id}
+          - list.cards.order(:ordinal).each do |card|
+            %li{id: card.id, class: 'list-group-item'}
+              = link_to board_list_card_path(@board, list, card), 'data-target': '#myModal', 'data-toggle': 'modal' do
+                = card.title
+        .list-group-item.not-sortable{style:'margin-top: 2px'}
+          = render 'card_form', {list: list}
+  .list-wrapper
+    .well.well-sm
+      = render 'list_form'
 
-= link_to 'Edit', edit_board_path(@board)
-\|
-= link_to 'Back', boards_path
+
+
+  .modal.fade#myModal{tabindex:'-1', 'role': 'dialog', 'aria-labelledby':'myModalLabel'}
+    .modal-dialog{role:'document'}
+      .modal-content
+
+
+- content_for(:header_area) do
+  :javascript
+    $(function(){
+      $('.bgcolor').css('background', '#{@board.bgcolor}');
+    });

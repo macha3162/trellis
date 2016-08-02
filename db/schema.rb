@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801140539) do
+ActiveRecord::Schema.define(version: 20160802113108) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -18,6 +18,27 @@ ActiveRecord::Schema.define(version: 20160801140539) do
     t.string   "bgcolor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.integer  "ordinal",     default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["list_id"], name: "index_cards_on_list_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "board_id"
+    t.integer  "ordinal",    default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["board_id"], name: "index_lists_on_board_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +61,15 @@ ActiveRecord::Schema.define(version: 20160801140539) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid"], name: "index_users_on_uid", unique: true
+  end
+
+  create_table "users_boards", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "board_id"
+    t.string   "favorite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "board_id"], name: "index_users_boards_on_user_id_and_board_id"
   end
 
 end

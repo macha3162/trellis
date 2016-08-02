@@ -1,25 +1,13 @@
-%h1 Listing boards
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Scope
-      %th Bgcolor
-      %th
-      %th
-      %th
-
-  %tbody
+%div(style="margin: 100px 0 0 0" )
+  .row
     - @boards.each do |board|
-      %tr
-        %td= board.name
-        %td= board.scope
-        %td= board.bgcolor
-        %td= link_to 'Show', board
-        %td= link_to 'Edit', edit_board_path(board)
-        %td= link_to 'Destroy', board, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Board', new_board_path
+      .col-sm-2
+        .well
+          %h4= link_to board.name, board
+          %br
+          = link_to 'Edit', edit_board_path(board)
+          = link_to 'Destroy', board, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .col-sm-offset-1
+    %br
+  .row
+    = link_to 'New Board', new_board_path, class: 'btn btn-info'
