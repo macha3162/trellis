@@ -46,7 +46,7 @@ ul.sortable {
     box-sizing: border-box;
     display: inline-block;
     vertical-align: top;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .list-wrapper:first-child {
@@ -85,12 +85,18 @@ ul.sortable {
     color: #DADADA !important;
 }
 
+.body-board > .navbar {
+    background: rgba(0,0,0,.20);
+}
+
 .navbar {
     min-height: 35px !important;
     margin-bottom: 5px !important;
     background: #026aa7;
     position: fixed;
     width: 100%;
+    border: none;
+
 }
 
 .navbar-text {

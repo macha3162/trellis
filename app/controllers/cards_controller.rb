@@ -35,7 +35,6 @@ class CardsController < ApplicationController
         format.html { redirect_to board_path(@board) }
         format.json { render :show, status: :created, location: [@board, @list, @card] }
       else
-        pp @card.errors
         format.html { redirect_to board_path(@board), alert: 'カード名を入力してください' }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end

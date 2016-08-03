@@ -8,9 +8,9 @@
     .list-wrapper
       .well.well-sm
         %h4
-          = best_in_place [@board, list], :name, :as => :input
-          = link_to 'x', [@board, list], :method => :delete, :data => { :confirm => 'Are you sure?' }
-        %ul{id: "list_#{list.id}", class: 'list-group sortable', 'data-board_id': @board.id, 'data-list_id': list.id}
+          = best_in_place [@board, list], :name, as: :input
+          = link_to 'x', [@board, list], method: :delete, data: { :confirm => '本当に削除しますか?' }
+        %ul{id: "list_#{list.id}", class: 'list-group sortable', 'data-list_url': board_list_cards_path(@board, list)}
           - list.cards.order(:ordinal).each do |card|
             %li{id: card.id, class: 'list-group-item'}
               = link_to board_list_card_path(@board, list, card), 'data-target': '#myModal', 'data-toggle': 'modal' do
