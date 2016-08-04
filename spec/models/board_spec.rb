@@ -1,5 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Board, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+
+  it 'ボード名が必須であること' do
+    board = Board.new
+    board.valid?
+    expect(board.errors[:name]).to include('can\'t be blank')
+  end
+
+  it 'モデル保存後にカラーがセットされていること' do
+    board = Board.create(name: 'test')
+    expect(Board::BGCOLOR.values).to include(board.bgcolor)
+  end
 end

@@ -6,7 +6,7 @@ class CardsController < ApplicationController
   layout 'modal'
 
   def index
-    @cards = Card.all
+    redirect_to @board
   end
 
   def show

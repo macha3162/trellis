@@ -2,6 +2,9 @@ class ListsController < ApplicationController
   before_action :set_board
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
+  def index
+    redirect_to @board
+  end
 
   def show
   end
@@ -21,8 +24,8 @@ class ListsController < ApplicationController
         format.html { redirect_to board_path(@board), notice: 'リストを作成しました！' }
         format.json { render :show, status: :created, location: [@board, @list] }
       else
-         pp @list.errors.full_messages
-        format.html { redirect_to board_path(@board), alert: 'リスト名を入力してください'}
+        pp @list.errors.full_messages
+        format.html { redirect_to board_path(@board), alert: 'リスト名を入力してください' }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end

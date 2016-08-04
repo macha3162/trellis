@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'カード名が必須であること' do
+    card = Card.new
+    card.valid?
+    expect(card.errors[:title]).to include('can\'t be blank')
+  end
+
 end

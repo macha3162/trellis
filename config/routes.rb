@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'boards#index'
 
   resources :boards do
-    resources :lists, expect: %i(index) do
+    resources :lists do
       resources :cards do
         post 'sort'
       end

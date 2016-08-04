@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :card do
+    title 'カード'
     description "MyText"
-    list nil
-    user nil
-    order 1
+    ordinal 1
   end
 end
