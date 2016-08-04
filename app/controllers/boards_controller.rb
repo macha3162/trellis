@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
     # 中間テーブルを作成するために先にcreateしている.
     @board = current_user.boards.create(board_params)
     if @board.valid?
-      redirect_to @board, notice: 'Board was successfully created.'
+      redirect_to @board, notice: 'ボードを新規作成しました'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      redirect_to @board, notice: 'Board was successfully updated.'
+      redirect_to @board
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to boards_url, notice: 'Board was successfully destroyed.'
+    redirect_to boards_url, notice: 'ボードを削除しました'
   end
 
   private

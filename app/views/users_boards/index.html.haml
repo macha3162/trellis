@@ -1,0 +1,29 @@
+%h4
+  =@board.try(:name)
+  = link_to 'back', board_path(@board)
+
+.panel.panel-default
+  .panel-heading
+    Board共有者一覧
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th
+        %th User
+        %th 参加日
+        %th
+
+    %tbody
+      - @users_boards.each do |users_board|
+        %tr
+          %td= image_tag gravatar_image_url(users_board.user.try(:email), size: 28), class: 'img-rounded'
+          %td= users_board.user.try(:name)
+          %td= users_board.created_at
+          %td= link_to 'Destroy', [@board, users_board], method: :delete, data: { :confirm => '削除するとBoardにアクセスできなくなりますがよろしいですか？' }, class: 'btn btn-xs btn-danger'
+
+%br
+
+
+
+=render 'form'
+
