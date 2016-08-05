@@ -3,7 +3,7 @@ class CreateUsersBoards < ActiveRecord::Migration[5.0]
     create_table :users_boards do |t|
       t.string :user_id
       t.string :board_id
-      t.string :favorite
+      t.string :favorite, default: false
 
       t.timestamps
     end

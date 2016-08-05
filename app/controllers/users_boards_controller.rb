@@ -25,6 +25,17 @@ class UsersBoardsController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @users_board.update(users_board_params)
+        format.html { redirect_to board_users_boards_path(@board), notice: 'Users board was successfully updated.' }
+        format.json { render :show, status: :ok, location: board_users_boards_path(@board) }
+      else
+        format.html { render :edit }
+        format.json { render json: @users_board.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
     if (@board.users_boards.one?)

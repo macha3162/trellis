@@ -1,11 +1,13 @@
-%div(style="margin: 100px 0 0 0" )
+#board-list(style="margin: 10px" )
   .row
+    .page-header
+      .h2
+        TODO:スター付きボード
     - @boards.each do |board|
-      .col-sm-2
-        .well
-          %h4= link_to board.name, board
-          %br
-          = link_to 'Edit', edit_board_path(board)
-          = link_to 'Destroy', board, :method => :delete, :data => { :confirm => 'Are you sure?' }
-  .col-sm-offset-1
-    %br
+      = render board
+  .row
+    .page-header
+      .h2
+        ユーザーボード
+    - @boards.each do |board|
+      = render board
