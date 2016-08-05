@@ -3,6 +3,5 @@ class List < ApplicationRecord
   has_many :cards, dependent: :destroy
 
   validates :name, presence: true
-
   default_scope -> { order(:ordinal) }
 end

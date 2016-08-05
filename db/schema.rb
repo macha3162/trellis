@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 20160802113108) do
   create_table "users_boards", force: :cascade do |t|
     t.string   "user_id"
     t.string   "board_id"
-    t.string   "favorite",   default: "f"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.boolean  "favorite",   default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["user_id", "board_id"], name: "index_users_boards_on_user_id_and_board_id"
   end
 

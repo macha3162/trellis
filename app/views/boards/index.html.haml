@@ -1,13 +1,15 @@
 #board-list(style="margin: 10px" )
   .row
     .page-header
-      .h2
-        TODO:スター付きボード
-    - @boards.each do |board|
-      = render board
+      .h3
+        = fa_icon('star')
+        スター付きボード
+    - @users_boards.where(favorite: true).each do |user_board|
+      = render user_board.board
   .row
     .page-header
-      .h2
+      .h3
+        = fa_icon('user')
         ユーザーボード
-    - @boards.each do |board|
-      = render board
+    - @users_boards.where(favorite: false).each do |user_board|
+      = render user_board.board

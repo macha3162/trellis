@@ -18,7 +18,7 @@ class UsersBoardsController < ApplicationController
   def create
     @users_board = @board.users_boards.build(users_board_params)
     if @users_board.save
-      redirect_to board_users_boards_path(@board), notice: 'Users board was successfully created.'
+      redirect_to board_users_boards_path(@board), notice: 'ボードが共有されました'
     else
       @users_boards = @board.users_boards.reload
       render :index
@@ -28,7 +28,7 @@ class UsersBoardsController < ApplicationController
   def update
     respond_to do |format|
       if @users_board.update(users_board_params)
-        format.html { redirect_to board_users_boards_path(@board), notice: 'Users board was successfully updated.' }
+        format.html { redirect_to board_users_boards_path(@board), notice: 'ボード共有が更新されました' }
         format.json { render :show, status: :ok, location: board_users_boards_path(@board) }
       else
         format.html { render :edit }

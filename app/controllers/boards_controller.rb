@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   def index
-    @boards = current_user.boards.includes({lists: :cards})
+    @users_boards = current_user.users_boards.includes(:board)
   end
 
   def show

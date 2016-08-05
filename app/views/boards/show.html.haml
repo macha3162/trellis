@@ -1,7 +1,7 @@
 .sub-navbar
   %h4
     = best_in_place @board, :name, as: :input
-    = link_to 'Edit', board_users_boards_path(@board)
+    = link_to raw("#{fa_icon('users')} 共有設定"), board_users_boards_path(@board), class: 'btn btn-default btn-xs'
     = favorite_editor(@board, current_user)
 
 .board-area
