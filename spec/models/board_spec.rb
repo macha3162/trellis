@@ -6,7 +6,7 @@ RSpec.describe Board, type: :model do
   it 'ボード名が必須であること' do
     board = Board.new
     board.valid?
-    expect(board.errors[:name]).to include('can\'t be blank')
+    expect(board.errors[:name]).to include('を入力してください')
   end
 
   it 'モデル保存後にカラーがセットされていること' do

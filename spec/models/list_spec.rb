@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe List, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validation' do
+    it 'リスト名が必須であること' do
+      list = List.new
+      list.valid?
+      expect(list.errors[:name]).to include('を入力してください')
+    end
+  end
 end

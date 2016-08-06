@@ -26,12 +26,7 @@ RSpec.describe BoardsController, type: :controller do
 
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all boards as @boards" do
-      get :index, params: {}, session: valid_session
-      expect(assigns(:boards)).to eq([board])
-    end
-  end
+
 
   describe "GET #show" do
     it "assigns the requested board as @board" do
