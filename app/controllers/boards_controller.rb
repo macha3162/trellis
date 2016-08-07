@@ -26,10 +26,14 @@ class BoardsController < ApplicationController
   end
 
   def update
-    if @board.update(board_params)
-      redirect_to @board
-    else
-      render :edit
+    respond_to do |format|
+      if @board.update(board_params)
+        format.html { redirect_to @board }
+        format.json { respond_with_bip(@board) }
+      else
+        format.html { render :edit }
+        format.json { render json: @card.errors, status: :unprocessable_entity }
+      end
     end
   end
 

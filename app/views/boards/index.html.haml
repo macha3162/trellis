@@ -21,3 +21,10 @@
         ユーザーボード
     - @users_boards.where(favorite: false).each do |user_board|
       = render user_board.board
+
+- content_for(:header_area) do
+  :javascript
+    $(function(){
+      $('.star').bind("ajax:success", function(){location.href = '#{root_path}'});
+    });
+

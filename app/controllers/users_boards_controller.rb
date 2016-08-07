@@ -22,7 +22,7 @@ class UsersBoardsController < ApplicationController
   def update
     respond_to do |format|
       if @users_board.update(users_board_params)
-        format.html { redirect_to board_users_boards_path(@board) }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: [@board, @list, @card] }
       else
         format.html { render :edit }

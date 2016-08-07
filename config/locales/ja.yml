@@ -200,3 +200,16 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+
+  labels:
+    board:
+      bgcolor:
+        blue: ブルー
+        orange: オレンジ
+        green: グリーン
+        red: レッド
+        purple: パープル
+        lite_green: 黄緑
+        lite_blue: 水色
+        pink: ピンク
+        gray: グレー
