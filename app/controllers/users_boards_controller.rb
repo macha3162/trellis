@@ -20,10 +20,14 @@ class UsersBoardsController < ApplicationController
   end
 
   def update
-    if @users_board.update(users_board_params)
-      redirect_to board_users_boards_path(@board)
-    else
-      render :edit
+    respond_to do |format|
+      if @users_board.update(users_board_params)
+        format.html { redirect_to board_users_boards_path(@board) }
+        format.json { render :show, status: :ok, location: [@board, @list, @card] }
+      else
+        format.html { render :edit }
+        format.json { render json: @card.errors, status: :unprocessable_entity }
+      end
     end
   end
 

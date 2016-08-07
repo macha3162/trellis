@@ -1,1 +1,0 @@
-json.url users_board_url(users_board, format: :json)
