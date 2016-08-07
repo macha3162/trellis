@@ -18,8 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'jquery-ui-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -30,9 +29,25 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
+  gem 'simplecov', :require => false
 end
 
 group :development do
@@ -42,7 +57,23 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'twitter-bootstrap-rails'
+gem 'haml-rails', '~> 0.9'
+gem 'simple_form'
+gem 'gravatar_image_tag'
+gem 'font-awesome-rails'
+gem 'const_enum'
+gem 'best_in_place', '~> 3.0.1'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'

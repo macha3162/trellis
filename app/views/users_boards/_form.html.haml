@@ -1,0 +1,9 @@
+- @users_board ||= @board.users_boards.build
+= simple_form_for([@board, @users_board]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-info'

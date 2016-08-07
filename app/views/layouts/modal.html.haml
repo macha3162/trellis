@@ -1,0 +1,11 @@
+!!! 5
+%html(lang="en")
+  %head
+    = javascript_include_tag 'application'
+  %body
+    .modal-header
+      %button.close{type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
+      %h4.modal-title
+        = yield :modal_title
+    .modal-body
+      = yield

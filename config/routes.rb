@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'boards#index'
+
+  resources :boards do
+    resources :users_boards, except: %i(show new edit)
+    resources :lists, only: %i(create update destroy) do
+      resources :cards, except: %i(new edit) do
+        post 'sort'
+      end
+    end
+  end
+
+  devise_for :users, controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 end

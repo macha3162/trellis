@@ -1,0 +1,55 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Trellis"
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+
+    = yield :header_area
+
+  %body.bgcolor{class: current_page?(root_path) ? '' : 'body-board'}
+    .navbar.navbar-default.navbar-static-top
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+          %a.navbar-brand(href="#{ root_path}") Trellis
+        #navbar.navbar-collapse.collapse
+          - if user_signed_in?
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                  = image_tag gravatar_image_url(current_user.email, size: 28), class: 'img-rounded'
+                  = current_user.name
+                  %ul.dropdown-menu
+                    %li
+                      = link_to 'プロフィール編集', edit_user_registration_path
+                    %li
+                      =link_to 'ログアウト', destroy_user_session_path, method: :delete
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                  =fa_stacked_icon 'plus'
+                  %ul.dropdown-menu
+                    %li
+                      =link_to new_board_path, id: 'create_board', class: 'list-group-item' do
+                        %h4.list-group-item-heading
+                          ボードを作成する...
+                        %p.list-group-item-text(style="width: 300px;white-space: normal;")
+                          ボードとは、数多くのリスト中から、 自分で作成したリストのコレクションです。
+                          プロジェクトの管理、コレクションの追跡などあらゆるものを整理するために、ぜひお使いください。
+
+
+
+    %main
+      .container-fluid
+        .row
+          .col-lg-12
+            = bootstrap_flash
+            = yield
