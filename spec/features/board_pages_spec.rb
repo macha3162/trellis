@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'ボードの操作', type: :feature do
   before do
     create(:user)
-    visit root_path
+    visit new_user_session_path
     fill_in 'Email', with: 'yamada@example.com'
     fill_in 'Password', with: 'password'
     click_on 'Log in'
