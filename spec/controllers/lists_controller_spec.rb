@@ -25,37 +25,6 @@ RSpec.describe ListsController, type: :controller do
     login_user user
   end
 
-  describe "GET #index" do
-    it "assigns all lists as @lists" do
-      list = List.create! valid_attributes
-      get :index, params: {board_id: board.id, }, session: valid_session
-      expect(response).to redirect_to(board_path(board))
-    end
-  end
-
-  describe "GET #show" do
-    it "assigns the requested list as @list" do
-      list = List.create! valid_attributes
-      get :show, params: {board_id: board.id, id: list.to_param}, session: valid_session
-      expect(assigns(:list)).to eq(list)
-    end
-  end
-
-  describe "GET #new" do
-    it "assigns a new list as @list" do
-      get :new, params: {board_id: board.id}, session: valid_session
-      expect(assigns(:list)).to be_a_new(List)
-    end
-  end
-
-  describe "GET #edit" do
-    it "assigns the requested list as @list" do
-      list = List.create! valid_attributes
-      get :edit, params: {board_id: list.board_id, id: list.to_param}, session: valid_session
-      expect(assigns(:list)).to eq(list)
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new List" do
@@ -112,20 +81,6 @@ RSpec.describe ListsController, type: :controller do
         list = List.create! valid_attributes
         put :update, params: {board_id: board.id, id: list.to_param, list: valid_attributes}, session: valid_session
         expect(response).to redirect_to(board_path(board))
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the list as @list" do
-        list = List.create! valid_attributes
-        put :update, params: {board_id: board.id, id: list.to_param, list: invalid_attributes}, session: valid_session
-        expect(assigns(:list)).to eq(list)
-      end
-
-      it "re-renders the 'edit' template" do
-        list = List.create! valid_attributes
-        put :update, params: {board_id: board.id, id: list.to_param, list: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
       end
     end
   end

@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :set_board
   before_action :set_list
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, only: [:show, :update, :destroy]
 
   layout 'modal'
 
@@ -14,16 +14,7 @@ class CardsController < ApplicationController
   end
 
   def sort
-    Card.transaction do
-      # List間を移動するとメソッドチェーンでFindできなくなるので、とりあえず通常Find.
-      cards = Card.find(params[:card_id].split(','))
-      cards.each_with_index do |card, index|
-        # update_attributesを使うと無駄なSQLが発行されるので複数行で対応
-        card.list = @list
-        card.ordinal = index
-        card.save
-      end
-    end
+    Card.sort(@list, params[:card_id].split(','))
     render body: nil
   end
 

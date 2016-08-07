@@ -1,19 +1,12 @@
 class ListsController < ApplicationController
   before_action :set_board
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :update, :destroy]
 
   def index
     redirect_to @board
   end
 
   def show
-  end
-
-  def new
-    @list = List.new
-  end
-
-  def edit
   end
 
   def create

@@ -99,20 +99,6 @@ RSpec.describe CardsController, type: :controller do
         expect(response).to redirect_to(board_path(board))
       end
     end
-
-    context "with invalid params" do
-      it "assigns the card as @card" do
-        card = Card.create! valid_attributes
-        put :update, params: {board_id: board.id, list_id: list.id, id: card.to_param, card: invalid_attributes}, session: valid_session
-        expect(assigns(:card)).to eq(card)
-      end
-
-      it "re-renders the 'edit' template" do
-        card = Card.create! valid_attributes
-        put :update, params: {board_id: board.id, list_id: list.id, id: card.to_param, card: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
-      end
-    end
   end
 
   describe "DELETE #destroy" do
