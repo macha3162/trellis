@@ -1,4 +1,12 @@
-#board-list(style="margin: 10px" )
+#board-list(style="margin: 10px")
+  - if @users_boards.blank?
+    .row
+      .col-sm-offset-9
+        =image_tag 'arrow.png', size: 100
+        %h4
+          新しいボードを
+          %br
+          作成するにはこちら
   .row
     .page-header
       .h3

@@ -14,7 +14,7 @@
 
     = yield :header_area
 
-  %body.bgcolor{class: current_page?(root_path) ? '' : 'body-board'}
+  %body.bgcolor{class: need_body_class? ? '' : 'body-board'}
     .navbar.navbar-default.navbar-static-top
       .container-fluid
         .navbar-header
@@ -44,12 +44,17 @@
                         %p.list-group-item-text(style="width: 300px;white-space: normal;")
                           ボードとは、数多くのリスト中から、 自分で作成したリストのコレクションです。
                           プロジェクトの管理、コレクションの追跡などあらゆるものを整理するために、ぜひお使いください。
+          - else
+            %p.navbar-text.navbar-right
+              = link_to 'ログイン', new_session_path(:user), class: 'btn btn-success btn-xs'
+              or
+              = link_to 'サインアップ', new_registration_path(:user), class: 'btn btn-info btn-xs'
 
 
 
     %main
       .container-fluid
         .row
+          = bootstrap_flash
           .col-lg-12
-            = bootstrap_flash
             = yield

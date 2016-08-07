@@ -6,6 +6,9 @@ class UsersBoardsController < ApplicationController
     @users_boards = @board.users_boards
   end
 
+  def show
+  end
+
   def create
     @users_board = @board.users_boards.build(users_board_params)
     if @users_board.save
@@ -18,7 +21,7 @@ class UsersBoardsController < ApplicationController
 
   def update
     if @users_board.update(users_board_params)
-      redirect_to board_users_boards_path(@board), notice: 'ボード共有が更新されました'
+      redirect_to board_users_boards_path(@board)
     else
       render :edit
     end

@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20160802113108) do
   end
 
   create_table "users_boards", force: :cascade do |t|
-    t.string   "user_id"
-    t.string   "board_id"
+    t.integer  "user_id"
+    t.integer  "board_id"
     t.boolean  "favorite",   default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

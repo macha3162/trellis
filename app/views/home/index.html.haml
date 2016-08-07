@@ -1,0 +1,15 @@
+.section-wrapper.text-center(style="margin: 200px")
+  = image_tag 'logo.png'
+  %h1
+    みんなでなんでも視覚的に整理する無料ツール
+  .text-center
+    %p(style="margin: 20px")
+      長くて難解なメールのやり取り、いつ更新されたかわからない
+      スプレッドシート、古くなってもう付かない付箋、使いにくい
+      プロジェクト管理ソフトは、もう忘れてください。Trellisを使えば
+      プロジェクトのすべてがひと目でわかります。
+    = link_to '新規登録-無料です', new_registration_path(:user), class: 'btn btn-info btn-lg'
+    %br
+    %br
+    = link_to 'ログイン', new_session_path(:user)
+
