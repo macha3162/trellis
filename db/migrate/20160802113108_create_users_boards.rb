@@ -1,8 +1,8 @@
 class CreateUsersBoards < ActiveRecord::Migration[5.0]
   def change
     create_table :users_boards do |t|
-      t.string :user_id
-      t.string :board_id
+      t.integer :user_id
+      t.integer :board_id
       t.boolean :favorite, default: false, null: false
 
       t.timestamps
