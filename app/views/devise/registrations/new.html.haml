@@ -8,4 +8,9 @@
       = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
       = f.input :password_confirmation, required: true
     .form-actions
-      = f.button :submit, 'Sign up'
+      = f.button :submit, '新しいアカウントを作る'
+  .row
+    %h3
+      Googleアカウントをお持ちですか？
+    = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, class: 'btn btn-success'
+
