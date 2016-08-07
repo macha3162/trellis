@@ -48,21 +48,6 @@ RSpec.describe CardsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new card as @card" do
-      get :new, params: {board_id: board.id, list_id: list.id}, session: valid_session
-      expect(assigns(:card)).to be_a_new(Card)
-    end
-  end
-
-  describe "GET #edit" do
-    it "assigns the requested card as @card" do
-      card = Card.create! valid_attributes
-      get :edit, params: {board_id: board.id, list_id: list.id, id: card.to_param}, session: valid_session
-      expect(assigns(:card)).to eq(card)
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Card" do

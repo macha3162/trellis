@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'boards#index'
 
   resources :boards do
-    resources :users_boards
-    resources :lists do
-      resources :cards do
+    resources :users_boards, except: %i(show new edit)
+    resources :lists, only: %i(create update destroy) do
+      resources :cards, except: %i(new edit) do
         post 'sort'
       end
     end

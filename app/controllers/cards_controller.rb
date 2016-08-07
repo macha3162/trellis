@@ -6,6 +6,7 @@ class CardsController < ApplicationController
   layout 'modal'
 
   def index
+    # TODO: カード検索のために残している.
     redirect_to @board
   end
 
@@ -13,19 +14,17 @@ class CardsController < ApplicationController
   end
 
   def sort
-    # List間を移動すると、メソッドチェーンでFindできなくなるので、とりあえず通常Find.
-    cards = Card.find(params[:card_id].split(','))
-    cards.each_with_index do |card, index|
-      card.update_attributes({list: @list, ordinal: index})
+    Card.transaction do
+      # List間を移動するとメソッドチェーンでFindできなくなるので、とりあえず通常Find.
+      cards = Card.find(params[:card_id].split(','))
+      cards.each_with_index do |card, index|
+        # update_attributesを使うと無駄なSQLが発行されるので複数行で対応
+        card.list = @list
+        card.ordinal = index
+        card.save
+      end
     end
     render body: nil
-  end
-
-  def new
-    @card = Card.new
-  end
-
-  def edit
   end
 
   def create
