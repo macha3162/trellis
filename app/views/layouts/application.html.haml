@@ -20,6 +20,10 @@
         .navbar-header
           %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
           %a.navbar-brand(href="#{ root_path}") Trellis
+
+          %form.navbar-form.navbar-left
+            .form-group
+              %select#ajax-search.form-control.navbar-input-sm
         #navbar.navbar-collapse.collapse
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right

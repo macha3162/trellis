@@ -1,6 +1,9 @@
 class Card < ApplicationRecord
   belongs_to :list
   belongs_to :user
+  belongs_to :board
+
+  before_validation :set_board_id
 
   validates :title, presence: true
 
@@ -15,5 +18,9 @@ class Card < ApplicationRecord
         card.save
       end
     end
+  end
+
+  def set_board_id
+    self.board_id = self.list.board_id if self.list.present?
   end
 end

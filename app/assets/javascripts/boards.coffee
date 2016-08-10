@@ -12,3 +12,7 @@ jQuery ->
       url: list.data('list_url') + "/" + $("#" + list.attr('id')).sortable('toArray').join(',') + "/sort"
     });
   );
+
+  $("#dropdown").select2({
+    theme: "bootstrap"
+  });

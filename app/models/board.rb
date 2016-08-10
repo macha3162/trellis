@@ -2,6 +2,7 @@ class Board < ApplicationRecord
   has_many :lists, dependent: :destroy
   has_many :users_boards, dependent: :destroy
   has_many :users, through: :users_boards
+  has_many :cards
   validates :name, presence: true, length: {maximum: 255}
 
   before_save :set_bgcolor

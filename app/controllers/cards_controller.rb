@@ -1,13 +1,13 @@
 class CardsController < ApplicationController
-  before_action :set_board
-  before_action :set_list
+  before_action :set_board, except: %i(index)
+  before_action :set_list, except: %i(index)
   before_action :set_card, only: [:show, :update, :destroy]
 
   layout 'modal'
 
   def index
-    # TODO: カード検索のために残している.
-    redirect_to @board
+    keyword = "%#{params[:q]}%"
+    @cards = Card.where('title like ? or description like ?', keyword, keyword)
   end
 
   def show
@@ -25,6 +25,7 @@ class CardsController < ApplicationController
         format.html { redirect_to board_path(@board) }
         format.json { render :show, status: :created, location: [@board, @list, @card] }
       else
+        pp @card.errors
         format.html { redirect_to board_path(@board), alert: 'カード名を入力してください' }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end

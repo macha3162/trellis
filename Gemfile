@@ -78,3 +78,5 @@ gem 'best_in_place', '~> 3.0.1'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+gem 'select2-rails'

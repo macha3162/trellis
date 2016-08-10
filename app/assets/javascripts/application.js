@@ -16,4 +16,6 @@
 //= require best_in_place.jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require select2-full
+//= require search
 //= require_tree .

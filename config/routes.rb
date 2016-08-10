@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'boards#index'
   get 'home', controller: :home, action: :index, as: :home
+  get 'search', controller: :cards, action: :index, as: :search
 
   resources :boards do
     resources :users_boards, except: %i(new edit)
