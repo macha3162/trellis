@@ -11,11 +11,11 @@ class User < ApplicationRecord
     user = User.where(email: google_response.info.email).first
 
     unless user
-      user = User.create(name:     google_response.info.name,
+      user = User.create(name: google_response.info.name,
                          provider: google_response.provider,
-                         uid:      google_response.uid,
-                         email:    google_response.info.email,
-                         token:    google_response.credentials.token,
+                         uid: google_response.uid,
+                         email: google_response.info.email,
+                         token: google_response.credentials.token,
                          password: Devise.friendly_token[0, 20])
     end
     user
@@ -23,5 +23,10 @@ class User < ApplicationRecord
 
   def self.google_response_valid?(google_response)
     google_response.try(:info).present?
+  end
+
+  def cards
+    ids = self.users_boards.pluck(:board_id)
+    Card.where('board_id in (?)', ids)
   end
 end

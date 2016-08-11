@@ -4,6 +4,7 @@ class Card < ApplicationRecord
   belongs_to :board
 
   before_validation :set_board_id
+  before_create :set_ordinal
 
   validates :title, presence: true
 
@@ -22,5 +23,9 @@ class Card < ApplicationRecord
 
   def set_board_id
     self.board_id = self.list.board_id if self.list.present?
+  end
+
+  def set_ordinal
+    self.ordinal = self.list.cards.count
   end
 end

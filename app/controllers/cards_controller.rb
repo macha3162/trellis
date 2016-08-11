@@ -22,10 +22,10 @@ class CardsController < ApplicationController
     @card = @list.cards.build(card_params)
     respond_to do |format|
       if @card.save
+        BoardChannel.broadcast_card(@card, :create)
         format.html { redirect_to board_path(@board) }
         format.json { render :show, status: :created, location: [@board, @list, @card] }
       else
-        pp @card.errors
         format.html { redirect_to board_path(@board), alert: 'カード名を入力してください' }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
@@ -35,6 +35,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
+        BoardChannel.broadcast_card(@card, :update)
         format.html { redirect_to board_path(@board) }
         format.json { render :show, status: :ok, location: [@board, @list, @card] }
       else
@@ -47,6 +48,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
+      BoardChannel.broadcast_card(@card, :destroy)
       format.html { redirect_to board_path(@board) }
       format.json { head :no_content }
     end

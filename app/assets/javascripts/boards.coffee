@@ -6,10 +6,13 @@ jQuery ->
   });
 
   $(".sortable").bind('sortupdate', (event, ui)->
+    console.log(ui.item)
     list = ui.item.parent()
     $.ajax({
       type: "POST",
-      url: list.data('list_url') + "/" + $("#" + list.attr('id')).sortable('toArray').join(',') + "/sort"
+      url: list.data('list_url') + "/" + $("#" + list.attr('id')).sortable('toArray').join(',') + "/sort",
+      success: (data) ->
+        App.board.move_card(ui.item.attr('id'))
     });
   );
 
