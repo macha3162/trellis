@@ -8,8 +8,6 @@ class BoardChannel < ApplicationCable::Channel
   end
 
   def board_subscribe(data)
-    pp data
-    pp '1' * 100
     stop_all_streams
     stream_from "board_channel_#{data['id']}"
   end
