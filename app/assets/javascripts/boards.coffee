@@ -5,8 +5,7 @@ jQuery ->
     items: "li:not(.not-sortable)"
   });
 
-  $(".sortable").bind('sortupdate', (event, ui)->
-    console.log(ui.item)
+  $(".sortable").on('sortstop', (event, ui)->
     list = ui.item.parent()
     $.ajax({
       type: "POST",
