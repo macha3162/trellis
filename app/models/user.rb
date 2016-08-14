@@ -27,6 +27,6 @@ class User < ApplicationRecord
 
   def cards
     ids = self.users_boards.pluck(:board_id)
-    Card.where('board_id in (?)', ids)
+    Card.where('board_id in (?)', ids).includes(:board)
   end
 end

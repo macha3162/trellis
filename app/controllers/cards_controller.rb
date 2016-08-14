@@ -7,7 +7,7 @@ class CardsController < ApplicationController
 
   def index
     keyword = "%#{params[:q]}%"
-    @cards = Card.where('title like ? or description like ?', keyword, keyword)
+    @cards = current_user.cards.where('title like :keyword or description like :keyword', {keyword: keyword})
   end
 
   def show
