@@ -1,5 +1,3 @@
 %li{id: card.id, class: 'list-group-item'}
-  = card.id
-  = card.ordinal
   = link_to board_list_card_path(card.board_id, card.list_id, card), 'data-target': '#myModal', 'data-toggle': 'modal' do
     = truncate(card.title, length: 18)
