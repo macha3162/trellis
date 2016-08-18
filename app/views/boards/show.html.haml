@@ -14,7 +14,7 @@
         %ul{id: "list_#{list.id}", class: 'list-group sortable', 'data-list_url': board_list_cards_path(@board, list)}
           - list.cards.order(:ordinal).each do |card|
             = render 'card', {card: card}
-        .list-group-item.not-sortable{style:'margin-top: 2px'}
+        .list-group-item.not-sortable
           = render 'card_form', {list: list}
   .list-wrapper
     .well.well-sm
