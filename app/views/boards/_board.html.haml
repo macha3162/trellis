@@ -1,9 +1,9 @@
 .col-sm-3
-  .well-sm(style="background-color : #{board.bgcolor}")
+  .well-sm{style: "background-color: #{board.bgcolor}"}
     %div.text-right
       = favorite_editor(board, current_user)
     %h4
       = link_to board.name, board
     %div.text-right
       = link_to fa_icon('users'), board_users_boards_path(board), title: '共有設定'
-      = link_to fa_icon('trash'), board, :method => :delete, :data => { confirm: 'ボードを削除してもよろしいですか？' }, title: 'ボードの削除'
+      = link_to fa_icon('trash'), board, method: :delete, data: {confirm: 'ボードを削除してもよろしいですか？'}, title: 'ボードの削除'

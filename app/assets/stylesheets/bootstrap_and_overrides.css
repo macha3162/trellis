@@ -114,6 +114,14 @@ ul.sortable {
     white-space: normal;
 }
 
+#home_body {
+    margin: 200px
+}
+
+#home_body p {
+    margin: 20px
+}
+
 .navbar {
     min-height: 35px !important;
     margin-bottom: 8px !important;
