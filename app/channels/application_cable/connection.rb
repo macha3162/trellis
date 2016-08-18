@@ -9,7 +9,7 @@ module ApplicationCable
 
     protected
     def find_verified_user
-      if current_user = User.find_by(id: session['warden.user.user.key'].first)
+      if session['warden.user.user.key'].present? and current_user = User.find_by(id: session['warden.user.user.key'].first)
         current_user
       else
         reject_unauthorized_connection

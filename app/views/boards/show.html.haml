@@ -10,7 +10,7 @@
       .well.well-sm
         %h4
           = best_in_place [@board, list], :name, as: :input
-          = link_to fa_icon('trash'), [@board, list], method: :delete, data: { :confirm => '本当に削除しますか?' }
+          = link_to fa_icon('trash'), [@board, list], method: :delete, data: { confirm: '本当に削除しますか?' }
         %ul{id: "list_#{list.id}", class: 'list-group sortable', 'data-list_url': board_list_cards_path(@board, list)}
           - list.cards.order(:ordinal).each do |card|
             = render 'card', {card: card}
@@ -19,16 +19,8 @@
   .list-wrapper
     .well.well-sm
       = render 'list_form'
-
-
-  .modal.fade#myModal{tabindex:'-1', 'role': 'dialog', 'aria-labelledby':'myModalLabel'}
+  .modal.fade#myModal{tabindex:'-1', 'role': 'dialog', 'aria-labelledby': 'myModalLabel'}
     .modal-dialog{role:'document'}
       .modal-content
 = hidden_field_tag(:board_id, @board.id, id: :board_id)
 
-
-- content_for(:header_area) do
-  :javascript
-    $(function(){
-      $('.bgcolor').css('background', '#{@board.bgcolor}');
-    });

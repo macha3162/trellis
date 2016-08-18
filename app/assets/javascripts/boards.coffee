@@ -15,6 +15,10 @@ jQuery ->
     });
   );
 
+  $('.star').bind("ajax:success", ->
+    location.href = '/'
+  );
+
   $("#dropdown").select2({
     theme: "bootstrap"
   });

@@ -1,8 +1,8 @@
-#board-list(style="margin: 10px")
+#board-list
   - if @users_boards.blank?
     .row
       .col-sm-offset-9
-        =image_tag 'arrow.png', size: 100
+        = image_tag 'arrow.png', size: 100
         %h4
           新しいボードを
           %br
@@ -21,10 +21,4 @@
         ユーザーボード
     - @users_boards.where(favorite: false).each do |user_board|
       = render user_board.board
-
-- content_for(:header_area) do
-  :javascript
-    $(function(){
-      $('.star').bind("ajax:success", function(){location.href = '#{root_path}'});
-    });
 

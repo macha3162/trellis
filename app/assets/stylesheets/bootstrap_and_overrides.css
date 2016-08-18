@@ -43,7 +43,6 @@ ul.sortable {
     width: 300px;
 }
 
-
 .list-wrapper {
     width: 270px;
     margin: 0 5px;
@@ -103,7 +102,16 @@ ul.sortable {
 }
 
 #board-list a {
+    margin: 10px;
+}
+
+#board-list a {
     color: #fff !important;
+}
+
+.add_board {
+    width: 300px;
+    white-space: normal;
 }
 
 .navbar {
@@ -158,6 +166,6 @@ ul.sortable {
     background-image: -moz-linear-gradient(center bottom, #eee 0%, #fff 50%);
     background-image: -o-linear-gradient(bottom, #eee 0%, #fff 50%);
     background-image: -ms-linear-gradient(top, #fff 0%, #eee 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#eeeeee', GradientType = 0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
     background-image: linear-gradient(top, #fff 0%, #eee 50%);
 }
