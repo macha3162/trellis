@@ -15,7 +15,6 @@ $(function () {
             processResults: function (data) {
                 return {
                     results: $.map(data, function (obj) {
-                        console.log(obj);
                         return {id: obj.board_id, text: obj.name + ':' + obj.title};
                     })
                 };

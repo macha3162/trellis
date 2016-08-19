@@ -1,25 +1,25 @@
 !!! 5
-%html(lang="en")
+%html{lang: 'en'}
   %head
-    %meta(charset="utf-8")
-    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Trellis"
+    %meta{charset: 'utf-8'}
+    %meta{'http-equiv': 'X-UA-Compatible', content: 'IE=Edge,chrome=1'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title= content_for?(:title) ? yield(:title) : 'Trellis'
     = csrf_meta_tags
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'
 
     = yield :header_area
 
-  %body.bgcolor{class: need_body_class? ? '' : 'body-board'}
+  %body.bgcolor{class: need_body_class? ? '' : 'body-board', style: "background: #{@board.try(:bgcolor) || 'fff'}"}
     .navbar.navbar-default.navbar-static-top
       .container-fluid
         .navbar-header
-          %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-          %a.navbar-brand(href="#{ root_path}") Trellis
+          %button.navbar-toggle{type: 'button', 'data-toggle': 'collapse', 'data-target': '.navbar-responsive-collapse'}
+          %a.navbar-brand{href: root_path} Trellis
           - if user_signed_in?
             %form.navbar-form.navbar-left
               .form-group
@@ -28,7 +28,7 @@
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
-                %a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                %a.dropdown-toggle{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false}
                   = image_tag gravatar_image_url(current_user.email, size: 28), class: 'img-rounded'
                   = current_user.name
                   %ul.dropdown-menu
@@ -38,14 +38,14 @@
                       =link_to 'ログアウト', destroy_user_session_path, method: :delete
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
-                %a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                %a.dropdown-toggle{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false}
                   =fa_stacked_icon 'plus'
                   %ul.dropdown-menu
                     %li
                       =link_to new_board_path, id: 'create_board', class: 'list-group-item' do
                         %h4.list-group-item-heading
                           ボードを作成する...
-                        %p.list-group-item-text(style="width: 300px;white-space: normal;")
+                        %p.list-group-item-text.add_board
                           ボードとは、数多くのリスト中から、 自分で作成したリストのコレクションです。
                           プロジェクトの管理、コレクションの追跡などあらゆるものを整理するために、ぜひお使いください。
           - else
@@ -53,8 +53,6 @@
               = link_to 'ログイン', new_session_path(:user), class: 'btn btn-success btn-xs'
               or
               = link_to 'サインアップ', new_registration_path(:user), class: 'btn btn-info btn-xs'
-
-
 
     %main
       .container-fluid

@@ -1,5 +1,5 @@
 %h4
-  ="#{@board.try(:name)}の共有設定"
+  = "#{@board.try(:name)}の共有設定"
   = link_to 'back', board_path(@board)
 
 
@@ -19,11 +19,15 @@
       %tbody
         - @users_boards.each do |users_board|
           %tr
-            %td(width="30px" )= image_tag gravatar_image_url(users_board.user.try(:email), size: 28), class: 'img-rounded'
-            %td= users_board.user.try(:name)
-            %td= users_board.created_at.to_s(:date)
-            %td= link_to 'Destroy', [@board, users_board], method: :delete, data: { :confirm => '削除するとBoardにアクセスできなくなりますがよろしいですか？' }, class: 'btn btn-xs btn-danger'
+            %td{width: '30px'}
+              = image_tag gravatar_image_url(users_board.user.try(:email), size: 28), class: 'img-rounded'
+            %td
+              = users_board.user.try(:name)
+            %td
+              = users_board.created_at.to_s(:date)
+            %td
+              = link_to '解除', [@board, users_board], method: :delete, data: {confirm: '削除するとBoardにアクセスできなくなりますがよろしいですか？'}, class: 'btn btn-xs btn-danger'
 
   %br
 .col-md-4
-  =render 'form'
+  = render 'form'
