@@ -11,6 +11,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    @comment = @card.comments.build
   end
 
   def sort
@@ -55,10 +56,6 @@ class CardsController < ApplicationController
   end
 
   private
-  def set_card
-    @card = @list.cards.find(params[:id])
-  end
-
   def card_params
     params.require(:card).permit(:title, :description, :order).merge(user: current_user)
   end

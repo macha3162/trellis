@@ -6,6 +6,11 @@
     = "リスト:#{@list.name}"
     %br
     = best_in_place [@board, @list, @card], :description, as: :textarea, place_holder: '説明を編集', display_with: :simple_format
+    .page-header
+      %h5
+        コメント
+        #card_comment
+          = render 'comments/form'
   .col-md-4
     .page-header
       %h5

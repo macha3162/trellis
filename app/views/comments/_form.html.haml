@@ -1,9 +1,11 @@
-= simple_form_for(@comment) do |f|
+- @card.comments.each do |comment|
+  = comment.body
+  %hr
+
+= simple_form_for([@board, @list, @card, Comment.new], remote: true) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :card_id
-    = f.input :user_id
     = f.input :body
 
   .form-actions
