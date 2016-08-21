@@ -11,7 +11,6 @@ class CardsController < ApplicationController
   end
 
   def show
-    @comment = @card.comments.build
   end
 
   def sort

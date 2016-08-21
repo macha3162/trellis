@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :lists, only: %i(create update destroy) do
       resources :cards, except: %i(new edit) do
         post 'sort'
-        resources :comments
+        resources :comments, only: %i(create update destroy)
       end
     end
   end
