@@ -55,10 +55,6 @@ class CardsController < ApplicationController
   end
 
   private
-  def set_card
-    @card = @list.cards.find(params[:id])
-  end
-
   def card_params
     params.require(:card).permit(:title, :description, :order).merge(user: current_user)
   end

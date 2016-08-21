@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809234455) do
+ActiveRecord::Schema.define(version: 20160821011307) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -25,13 +25,23 @@ ActiveRecord::Schema.define(version: 20160809234455) do
     t.text     "description"
     t.integer  "list_id"
     t.integer  "user_id"
-    t.integer  "ordinal",     default: 0, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "ordinal",        default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "board_id"
+    t.integer  "comments_count", default: 0
     t.index ["board_id"], name: "index_cards_on_board_id"
     t.index ["list_id"], name: "index_cards_on_list_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "card_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_comments_on_card_id"
   end
 
   create_table "lists", force: :cascade do |t|
