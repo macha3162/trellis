@@ -35,8 +35,8 @@ RSpec.describe CardsController, type: :controller do
   describe "GET #index" do
     it "assigns all cards as @cards" do
       card = Card.create! valid_attributes
-      get :index, params: {board_id: board.id, list_id: list.id}, session: valid_session
-      expect(response).to redirect_to(board_path(board))
+      get :index, params: {board_id: board.id, list_id: list.id, format: :json}, session: valid_session
+      expect(assigns(:cards)).to eq([card])
     end
   end
 

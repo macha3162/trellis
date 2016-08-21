@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
         BoardChannel.broadcast_card(@card.reload, :update)
         format.js { render :show, status: :created }
       else
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         BoardChannel.broadcast_card(@card.reload, :update)
         format.js { render :show, status: :created }
       else
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
