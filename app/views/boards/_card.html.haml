@@ -1,3 +1,7 @@
 %li{id: card.id, class: 'list-group-item'}
   = link_to board_list_card_path(card.board_id, card.list_id, card), 'data-target': '#myModal', 'data-toggle': 'modal',  'data-remote': 'false' do
     = truncate(card.title, length: 18)
+  - if card.comments_count > 0
+    %br
+    = fa_icon('commenting-o')
+    = card.comments_count
