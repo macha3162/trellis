@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
   def set_list
     @list = @board.lists.find(params[:list_id]||params[:id])
   end
+
+  def set_card
+    @card = @list.cards.find(params[:card_id]||params[:id])
+  end
 end
