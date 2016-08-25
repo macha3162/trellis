@@ -2,7 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name,placeholder: '例えば「XXXXプロジェクト管理」など'
+    = f.input :name, placeholder: '例えば「XXXXプロジェクト管理」など'
 
   .form-actions
+    = link_to 'Back', boards_path, class: 'btn btn-default'
     = f.button :submit

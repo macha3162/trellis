@@ -15,7 +15,7 @@ class CardsController < ApplicationController
 
   def sort
     Card.sort(@list, params[:card_id].split(','))
-    render body: nil
+    head :ok
   end
 
   def create

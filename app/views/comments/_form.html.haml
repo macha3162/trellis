@@ -1,8 +1,7 @@
 - @card.comments.order(:created_at).each do |comment|
   .media
     .media-left
-      %a{href: '#'}
-        = image_tag gravatar_image_url(comment.user.try(:email), size: 28), class: 'media-object pull-left'
+      = image_tag gravatar_image_url(comment.user.try(:email), size: 28), class: 'media-object pull-left'
     .media-body
       %h5.media-heading
         = "#{comment.user.try(:name)}さんがコメントしました"

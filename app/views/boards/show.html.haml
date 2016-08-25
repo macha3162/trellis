@@ -2,7 +2,7 @@
   %h4
     = best_in_place @board, :name, as: :input
     = link_to raw("#{fa_icon('users')} 共有設定"), board_users_boards_path(@board), class: 'btn btn-default btn-xs'
-    = favorite_editor(@board, current_user)
+    = favorite_editor(@board.users_boards.find_by(user: current_user))
 
 .board-area
   - @board.lists.each do |list|

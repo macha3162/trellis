@@ -1,7 +1,7 @@
 .col-sm-3
   .well-sm{style: "background-color: #{board.bgcolor}"}
     %div.text-right
-      = favorite_editor(board, current_user)
+      = favorite_editor(users_board)
     %h4
       = link_to board.name, board
     %div.text-right

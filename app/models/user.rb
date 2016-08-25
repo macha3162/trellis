@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :users_boards
+  has_many :users_boards, dependent: :destroy
   has_many :boards, through: :users_boards, dependent: :destroy
 
   devise :database_authenticatable, :registerable,

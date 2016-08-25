@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
   end
 
   def create
-    # 中間テーブルを作成するために先にcreateしている.
+    # 中間テーブル(users_board)を作成するために先にcreateしている.
     @board = current_user.boards.create(board_params)
     if @board.valid?
       redirect_to @board, notice: 'ボードを新規作成しました'

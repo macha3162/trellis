@@ -12,13 +12,13 @@
       .h3
         = fa_icon('star')
         スター付きボード
-    - @users_boards.where(favorite: true).each do |user_board|
-      = render user_board.board
+    - @users_boards.where(favorite: true).each do |users_board|
+      = render partial: 'board', locals: {board: users_board.board, users_board: users_board}
   .row
     .page-header
       .h3
         = fa_icon('user')
         ユーザーボード
-    - @users_boards.where(favorite: false).each do |user_board|
-      = render user_board.board
+    - @users_boards.where(favorite: false).each do |users_board|
+      = render partial: 'board', locals: {board: users_board.board, users_board: users_board}
 
