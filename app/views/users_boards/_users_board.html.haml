@@ -1,0 +1,9 @@
+.col-sm-3
+  .well-sm{style: "background-color: #{users_board.board.bgcolor}"}
+    %div.text-right
+      = favorite_editor(users_board)
+    %h4
+      = link_to users_board.board.name, users_board.board
+    %div.text-right
+      = link_to fa_icon('users'), board_users_boards_path(users_board.board), title: '共有設定'
+      = link_to fa_icon('trash'), users_board.board, method: :delete, data: {confirm: 'ボードを削除してもよろしいですか？'}, title: 'ボードの削除'
