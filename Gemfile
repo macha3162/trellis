@@ -75,6 +75,7 @@ gem 'gravatar_image_tag'
 gem 'font-awesome-rails'
 gem 'const_enum'
 gem 'best_in_place', '~> 3.0.1'
+gem 'uploadcare-rails', '~> 1.0'
 
 gem 'devise'
 gem 'omniauth'

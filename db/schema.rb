@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821011307) do
+ActiveRecord::Schema.define(version: 20160825002829) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
     t.string   "scope"
     t.string   "bgcolor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "card_files", force: :cascade do |t|
+    t.integer  "card_id"
+    t.string   "title"
+    t.string   "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

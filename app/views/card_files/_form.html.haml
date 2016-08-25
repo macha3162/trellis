@@ -1,0 +1,9 @@
+= simple_form_for(@card_file) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :card_id
+    = f.uploadcare_uploader :file
+
+  .form-actions
+    = f.button :submit

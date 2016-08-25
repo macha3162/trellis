@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Card:
+  = @card_file.card_id
+%p
+  %b Title:
+  = @card_file.title
+%p
+  %b File:
+  = image_tag(@card_file.file.url(preview: '200x200'))
+
+= link_to 'Edit', edit_card_file_path(@card_file)
+\|
+= link_to 'Back', card_files_path

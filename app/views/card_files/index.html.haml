@@ -1,0 +1,25 @@
+%h1 Listing card_files
+
+%table
+  %thead
+    %tr
+      %th Card
+      %th Title
+      %th File
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_files.each do |card_file|
+      %tr
+        %td= card_file.card_id
+        %td= card_file.title
+        %td= card_file.file
+        %td= link_to 'Show', card_file
+        %td= link_to 'Edit', edit_card_file_path(card_file)
+        %td= link_to 'Destroy', card_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Card file', new_card_file_path

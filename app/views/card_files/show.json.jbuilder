@@ -1,0 +1,1 @@
+json.partial! "card_files/card_file", card_file: @card_file

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :card_files
   root 'boards#index'
   get 'home', controller: :home, action: :index, as: :home
   get 'search', controller: :cards, action: :index, as: :search

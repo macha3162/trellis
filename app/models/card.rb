@@ -3,6 +3,7 @@ class Card < ApplicationRecord
   belongs_to :user
   belongs_to :board
   has_many :comments, dependent: :destroy
+  has_many :card_files, dependent: :destroy
 
   before_validation :set_board_id
   before_create :set_ordinal
