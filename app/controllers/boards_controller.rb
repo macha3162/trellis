@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  # 細かい事だし、どっちでも良いのですが  %i(show edit update destroy) と書くのもシンプルで好きです
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,6 +17,8 @@ class BoardsController < ApplicationController
   end
 
   def create
+    # scaffoldと異なる感じなのが気になりました。
+    # ここは、current_user.boards.build(board_params)にしておいて、boardモデルのコールバックで中間テーブルを作成しても良いかなと思いました。
     # 中間テーブル(users_board)を作成するために先にcreateしている.
     @board = current_user.boards.create(board_params)
     if @board.valid?

@@ -17,6 +17,7 @@ class Card < ApplicationRecord
         # update_attributesを使うと無駄なSQLが発行されるので複数行で対応
         card.list = list
         card.ordinal = index
+        # save! にしないとエラー検出できないように思います
         card.save
       end
     end
