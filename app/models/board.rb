@@ -3,9 +3,11 @@ class Board < ApplicationRecord
   has_many :users_boards, dependent: :destroy
   has_many :users, through: :users_boards
   has_many :cards
+  attr_accessor :user
 
-  validates :name, presence: true, length: {maximum: 255}
+  validates :name, :user, presence: true, length: {maximum: 255}
   before_save :set_bgcolor
+  after_create :build_users_boards
 
   const :BGCOLOR do
     BLUE '#0079BF'
@@ -21,5 +23,9 @@ class Board < ApplicationRecord
 
   def set_bgcolor
     self.bgcolor ||= BGCOLOR.values.sample
+  end
+
+  def build_users_boards
+    self.users_boards.create(user: user)
   end
 end
