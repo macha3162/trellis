@@ -22,6 +22,7 @@ class User < ApplicationRecord
   end
 
   def self.google_response_valid?(google_response)
+    # Ruby2.3以上でしたら google_response&.info.present? と書きたいところです。
     google_response.try(:info).present?
   end
 

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root 'boards#index'
+  # toオプションのほうがシンプルな気がします
+  # get 'home', to: 'home#index', as: :home
+  # get 'search', to: 'cards#index', as: :search
   get 'home', controller: :home, action: :index, as: :home
   get 'search', controller: :cards, action: :index, as: :search
 
