@@ -1,6 +1,6 @@
 class UsersBoardsController < ApplicationController
   before_action :set_board
-  before_action :set_users_board, only: [:show, :update, :destroy]
+  before_action :set_users_board, only: %i(show update destroy)
 
   def index
     @users_boards = @board.users_boards

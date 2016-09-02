@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_board
   before_action :set_list
   before_action :set_card
-  before_action :set_comment, only: [:update, :destroy]
+  before_action :set_comment, only: %i(update destroy)
 
   def create
     @comment = @card.comments.new(comment_params.merge({user: current_user}))

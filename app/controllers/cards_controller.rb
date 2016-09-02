@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :set_board, except: %i(index)
   before_action :set_list, except: %i(index)
-  before_action :set_card, only: [:show, :update, :destroy]
+  before_action :set_card, only: %i(show update destroy)
 
   layout 'modal'
 

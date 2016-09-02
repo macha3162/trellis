@@ -21,9 +21,6 @@ class BoardChannel < ApplicationCable::Channel
     ActionCable.server.broadcast "board_channel_#{card.board_id}", {dom: BoardChannel.build_card(card), card: card, action: action}
   end
 
-  # クラスメソッドをプライベートにしてもクラス外から呼べるので、あまり意味が無いかなと思います。
-  # クラス外から呼べないようにするなら  private_class_method を使うようにすればよさそうです。
-  private
   def self.build_card(card)
     ApplicationController.renderer.render(partial: 'boards/card', locals: {card: card})
   end
